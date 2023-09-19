@@ -21,10 +21,10 @@ export const typeDefs = gql`
     }
 
     type Record {
-        date: String,
+        date: Date,
         results: [Result],
         title: String,
-        end: String
+        end: Date
     }
 
     type Workout {
@@ -32,4 +32,6 @@ export const typeDefs = gql`
         user: String,
         record: Record
     }
+
+    scalar Date
 `

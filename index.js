@@ -24,7 +24,14 @@ async function startApolloServer() {
 }
 startApolloServer()
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true})
+// .then(()=>{
+//     app.listen(port, ()=>console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`))
+// })
 .then(()=>{
-    app.listen(port, ()=>console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`))
+    console.log('Connected to MongoDB')
+    return app.listen({port:port})
+})
+.then(res=>{
+    console.log(`server running at localhost:${port}`)
 })
